@@ -112,7 +112,6 @@ if (!text) throw `Contoh penggunaan ${usedPrefix}${command} id|teks1|teks2
 • 259237855 Laughing`
 let res = await fetch(`https://api.imgflip.com/caption_image?template_id=${thm}&username=Wudysoft&password=Wudysoft&text0=${text1}&text1=${text2}`)
   let x = await res.json()
-conn.sendButton(m.chat, `Random *${command}*`, author, x.data.url, [['🔄 Next 🔄', '.mim ' + text1 + '|' + text2]], m, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm,jpegThumbnail: Buffer.alloc(0)}}}})
 conn.sendButton(m.chat, `Result from *${command}*`, author, await(await fetch(x.data.url)).buffer(), [['🎀 Menu', '/menu'], ['🔄 Next 🔄', '.mim ' + text1 + '|' + text2]], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,

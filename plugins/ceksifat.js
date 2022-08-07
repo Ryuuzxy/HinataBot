@@ -15,21 +15,20 @@ let name = await conn.getName(who)
     let c = ['Baik Hati','Sombong','Pelit','Dermawan','Rendah Hati','Rendah Diri','Pemalu','Penakut','Pengusil','Cengeng'].getRandom()
     let d = ['Rajin','Malas','Membantu','Ngegosip','Jail','Gak jelas','Shoping','Chattan sama Doi','Chattan di WA karna Jomblo','Sedih','Kesepian','Bahagia'].getRandom()
 
-let caption = `
-┏──°❀❬ *Sifat ${text}* ❭❀°──⎔
+let caption = `${cmenut} *SIFAT ${text}* 🔖
 │
-│• Nama : *${text}*
-│• Ahlak Baik : *${a}%*
-│• Ahlak Buruk : *${b}%*
-│• Orang yang : *${c}*
-│• Selalu : *${d}*
-│• Kecerdasan : *${e}%*
-│• Kenakalan : *${f}%*
-│• Keberanian : *${g}%*
-│• Ketakutan : *${h}%*
-┗────────────────⎔
+${cmenub} Nama : *${text}*
+${cmenub} Ahlak Baik : *${a}%*
+${cmenub} Ahlak Buruk : *${b}%*
+${cmenub} Orang yang : *${c}*
+${cmenub} Selalu : *${d}*
+${cmenub} Kecerdasan : *${e}%*
+${cmenub} Kenakalan : *${f}%*
+${cmenub} Keberanian : *${g}%*
+${cmenub} Ketakutan : *${h}%*
+${cmenuf}
 `
-conn.reply(m.chat, caption, m, { contextInfo: {
+conn.sendButton(m.chat, caption, author, await(await fetch(hwaifu.getRandom())).buffer(), [['🎀 Menu', '/menu']], m, { mentions: conn.parseMention(caption), fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
@@ -37,7 +36,7 @@ conn.reply(m.chat, caption, m, { contextInfo: {
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
     thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sgc
+    sourceUrl: sig
      }}
   })
 }

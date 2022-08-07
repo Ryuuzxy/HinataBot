@@ -10,11 +10,11 @@ let timers = clockString(_ctimer)
   if (user.lastdagang < cooldown) {
   if (4999 > user.money) throw 'Target tidak memiliki modal harap masukkan modal 5000'
   if (4999 > user.money) throw 'kamu tidak memiliki modal harap masukkan modal 5000'
-  let caption = `${htki} BERDAGANG ${htki}\nMohon tunggu kak..\n@${m.sender.split("@")[0]} dan @${who.split("@")[0]} sedang berdagang.. 😅\n\n@${m.sender.split("@")[0]} dan @${who.split("@")[0]} meletakkan modal -${dapat} 😅`
+  let caption = `${htki} BERDAGANG ${htka}\nMohon tunggu kak..\n@${m.sender.split("@")[0]} dan @${who.split("@")[0]} sedang berdagang.. 😅\n\n@${m.sender.split("@")[0]} dan @${who.split("@")[0]} meletakkan modal -${dapat} 😅`
   
   let _caption = `Selamat @${m.sender.split("@")[0]} dan @${who.split("@")[0]} mendapatkan money..\n\nPenghasilan dagang @${m.sender.split("@")[0]} didapatkan +5000\n${user.money += 5000} Money @${m.sender.split("@")[0]}\n\nPenghasilan dagang @${who.split("@")[0]} didapatkan +5000\n${user.money += 5000} Money @${who.split("@")[0]}`
   
-  let __caption = `${htki} SUKSES ${htki}\nSelamat @${m.sender.split("@")[0]} dan @${who.split("@")[0]} mendapatkan money..\n\nPenghasilan dagang @${m.sender.split("@")[0]} didapatkan +10000\n${user.money += 10000} Money @${m.sender.split("@")[0]}\n\nPenghasilan dagang @${who.split("@")[0]} didapatkan +10000\n${user.money += 10000} Money @${who.split("@")[0]}`
+  let __caption = `${htki} SUKSES ${htka}\nSelamat @${m.sender.split("@")[0]} dan @${who.split("@")[0]} mendapatkan money..\n\nPenghasilan dagang @${m.sender.split("@")[0]} didapatkan +10000\n${user.money += 10000} Money @${m.sender.split("@")[0]}\n\nPenghasilan dagang @${who.split("@")[0]} didapatkan +10000\n${user.money += 10000} Money @${who.split("@")[0]}`
   
   conn.sendButton(m.chat, caption, clockString(60000), null, [
       ['Invetory', `${usedPrefix}inv`], ['Profile', `${usedPrefix}profile`]

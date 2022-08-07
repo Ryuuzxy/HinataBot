@@ -1,10 +1,12 @@
 import gtts from 'node-gtts'
 import { readFileSync, unlinkSync } from 'fs'
 import { join } from 'path'
-
+import fetch from 'node-fetch'
 const defaultLang = 'id'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
-
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
   let lang = args[0]
   let text = args.slice(1).join(' ')
   if ((args[0] || '').length !== 2) {
@@ -21,7 +23,21 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!text) throw `Use example ${usedPrefix}${command} en hello world`
     res = await tts(text, defaultLang)
   } finally {
-    if (res) conn.sendFile(m.chat, res, 'tts.opus', null, m, true)
+    if (res) conn.sendFile(m.chat, res, res, `
+*${wm}*
+*L O A D I N G. . .*
+`.trim(), m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: res
+     }}
+  })
+    
   }
 }
 handler.help = ['tts <lang> <teks>']

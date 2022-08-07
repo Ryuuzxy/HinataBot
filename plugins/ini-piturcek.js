@@ -107,21 +107,17 @@ let name = await conn.getName(who)
     let angka = 100
     let angka2 = 9
 let caption = `Tingkat ke *${args[0]}an* \nAtas nama ${name} @${who.split("@")[0]} \nAdalah Sebesar *${angka.getRandom()}.${angka2.getRandom()}%*`
-  await conn.sendButton(m.chat, caption, wm + '\n\n' + botdate, await(await fetch(pp)).buffer(), [['🎀 Menu', '/menu']], m, { mentions: conn.parseMention(caption), 
-            fileLength: fsizedoc,
-            seconds: fsizedoc,
-            jpegThumbnail: Buffer.alloc(0), contextInfo: {
+  await conn.sendButton(m.chat, caption, author, await(await fetch(hwaifu.getRandom())).buffer(), [['🎀 Menu', '/menu']], m, { mentions: conn.parseMention(caption), fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,
     description: wm, 
-    title: '👋 Hai, ' name + ' ' + ucapan,
+    title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
     thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sgc
+    sourceUrl: sig
      }}
   })
-    
 break
             }
        }

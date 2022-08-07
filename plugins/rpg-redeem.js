@@ -21,9 +21,9 @@ let timers = clockString(_ctimer)
    return m.reply(htki + ' KODE SALAH ' + htka)
    }
 }
-handler.help = ['redem']
+handler.help = ['redeem']
 handler.tags = ['rpg']
-handler.command = /^(redemcode|coderedem|redem)$/i
+handler.command = /^(redemcode|coderedem|redeem)$/i
 
 handler.cooldown = cooldown
 export default handler

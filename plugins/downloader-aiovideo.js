@@ -9,7 +9,6 @@ let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 if (!args[0]) throw `Use example ${usedPrefix}${command} https://vt.tiktok.com/ZSdDyUHcR/\n\nhttps://www.tiktok.com/@kata__kasar/video/7088823247373946138`
 
-try {
 const { title, medias } = await aiovideodl(args[0])
 for (const { url, quality, formattedSize} of medias) await conn.sendButton(m.chat, `*AIOVIDEO DOWNLOADER*\n\n${title ? `*Title:* ${title}` : "NotFound"}\n*💽Format:* ${quality ? `${quality}` : "Unknown"}\n*📨Size:* ${formattedSize ? `${formattedSize}` : "countless" }\n`, title + '.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
@@ -23,9 +22,6 @@ for (const { url, quality, formattedSize} of medias) await conn.sendButton(m.cha
     sourceUrl: url
      }}
   })
-} catch (e) {
-m.reply("Eror")
-}
 }
 handler.help = ['aiovideo2'].map(v => v + ' <url>')
 handler.tags = ['downloader']
