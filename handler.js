@@ -1294,7 +1294,7 @@ export async function participantsUpdate({ id, participants, action }) {
     */
     
     this.sendButton(id, text, wm + '\n\n' + botdate, await(await fetch(ppgc)).buffer(), [['🎀 Menu', '/menu'],
-      ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']], m, { mentions: this.parseMention(text), 
+      ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']], m, { mentions: [m.sender], 
             fileLength: fsizedoc,
             seconds: fsizedoc,
             jpegThumbnail: Buffer.alloc(0), contextInfo: {
