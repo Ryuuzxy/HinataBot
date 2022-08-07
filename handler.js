@@ -1284,31 +1284,11 @@ export async function participantsUpdate({ id, participants, action }) {
   let gettext = await fetch('https://raw.githubusercontent.com/fawwaz37/random/main/bijak.txt')
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
-  
-  /*
   this.sendHydrated2(id, text, wm + '\n\n' + botdate, action === 'add' ? pp : pp, sgc, (action == 'add' ? 'Hinata Group' : 'Nitip Gorengan'), null, null, [
       ['🎀 Menu', '/menu'],
       ['🪄 Test', '/ping'],
       ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']
     ], null, false, { mentions: [user] })
-    */
-    
-    this.sendButton(id, text, wm + '\n\n' + botdate, await(await fetch(ppgc)).buffer(), [['🎀 Menu', '/menu'],
-      ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']], m, { mentions: [m.sender], 
-            fileLength: fsizedoc,
-            seconds: fsizedoc,
-            jpegThumbnail: Buffer.alloc(0), contextInfo: {
-          externalAdReply :{
-    mediaUrl: sig,
-    mediaType: 2,
-    description: wm, 
-    title: '👋 Hai, @user' + ucapan,
-    body: botdate,
-    thumbnail: await(await fetch(pp)).buffer(),
-    sourceUrl: sgc
-     }}
-  })
-    
                     }
                 }
             }
