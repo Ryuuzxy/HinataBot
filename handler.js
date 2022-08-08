@@ -1124,14 +1124,11 @@ export async function handler(chatUpdate) {
                 m.isCommand = true
                 let xp = 'exp' in plugin ? parseInt(plugin.exp) : 17 // XP Earning per command
                 if (xp > 200)
-                    // m.reply('Ngecit -_-') // Hehehe
-                    this.sendButton(m.chat, `Jirr.. Ngecit -_- pake kalkulator.. Gpp lahh\nPencet dibawah, meresahkan`, wm, null, [
-        ['Ngechit', '/ngechit']
-    ], m)
+                    this.sendButton(m.chat, `[❗] *Sepertinya Anda Bermain Curang, Menggunakan Calculator*`, author, null, [['Buy Limit', '/buy limit'], ['Cheat Limit', '/ngechit']] , m)
                 else
                     m.exp += xp
                 if (!isPrems && plugin.limit && global.db.data.users[m.sender].limit < plugin.limit * 1) {
-                    this.reply(m.chat, `[❗] Limit anda habis, silahkan beli melalui *${usedPrefix}buy limit*`, m)
+                    this.sendButton(m.chat, `[❗] *Limit Anda Habis, Beberapa Command Tidak Bisa Di Akses*`, author, null, [['Buy Limit', '/buy limit'], ['Cheat Limit', '/ngechit']] , m)
                     continue // Limit habis
                 }
                 if (plugin.level > _user.level) {
@@ -1346,7 +1343,7 @@ export async function deleteUpdate(message) {
         let chat = global.db.data.chats[msg.chat] || {}
         if (chat.delete)
             return
-            this.sendButton(msg.key.remoteJid, `Terdeteksi @${participant.split`@`[0]} telah menghapus pesan
+            this.sendButton(msg.key.remoteJid, `Terdeteksi *@${participant.split`@`[0]}* telah menghapus pesan.
 Untuk mematikan fitur ini, ketik
 *.off antidelete*
 
@@ -1391,7 +1388,8 @@ ${htjava} RPG tidak aktif, Silahkan hubungi Team Bot Discussion Untuk mengaktifk
 ${htjava} Fitur ini di *disable* !`
     }[type]
     if (msg) return conn.sendHydrated(m.chat, msg, wm, logo, null, null, nomorown, nameown, [
-      ['🔖Ok', 'Huuu']
+      ['🔖 Ok', 'Huuu'],
+      ['ℹ️ Tes', 'Tes']
     ], null)
 }
 

@@ -1,7 +1,7 @@
 {
-    "name": "RkgkNetBot",
-    "version": "1.0.01",
-    "description": "©FearTeam-2022",
+    "name": "Hinata",
+    "version": "2.4",
+    "description": "©Wudysoft-2022",
     "main": "index.js",
     "type": "module",
     "directories": {
@@ -26,16 +26,16 @@
         "MD",
         "baileys-md"
     ],
-    "homepage": "https://github.com/Rizxyu",
+    "homepage": "https://github.com/AyGemuy",
     "author": {
-        "name": "Rizxyu"
+        "name": "AyGemuy"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/BochilGaming/games-wabot.git"
+        "url": "git+https://github.com/AyGemuy/HinataBot.git"
     },
     "bugs": {
-        "url": "https://github.com/BochilGaming/games-wabot/issues"
+        "url": "https://github.com/AyGemuy/HinataBot/issues"
     },
     "license": "GPL-3.0-or-later",
     "dependencies": {
