@@ -41,7 +41,7 @@ let name = await conn.getName(who)
             let buff = await promises.readFile(filename)
             m.reply(wait)
             // conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4' })
-            conn.sendFile(m.chat, buff, ran + '.mp3', '', m, /vn/.test(args[0]), { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+            conn.sendFile(m.chat, buff, ran, null, m, /vn/.test(args[0]), { quoted: m, mimetype: 'audio/mp4', fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
           externalAdReply :{
     mediaUrl: sig,
     mediaType: 2,

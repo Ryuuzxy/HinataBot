@@ -472,7 +472,7 @@ ${usedPrefix}transfer ${paymentMethod} ${(listItems[item][paymentMethod] * total
         user[paymentMethod] -= listItems[item][paymentMethod] * total
         user[item] += total
         return conn.sendButton(m.chat,
-`*––––––『 BOUGHT 』––––––*`,
+`*${htki} BOUGHT ${htka}*`,
 `ʏᴏᴜ *ʙᴏᴜɢʜᴛ ${total} ${global.rpg.emoticon(item)}${item}*.
 `.trim(), imgr + 'bought', [
 [`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]
@@ -482,7 +482,7 @@ ${usedPrefix}transfer ${paymentMethod} ${(listItems[item][paymentMethod] * total
         user[item] -= total
         user.money += listItems[item].money * total
         return conn.sendButton(m.chat,
-`*–––––––『 SOLD 』–––––––*`,
+`*${htki} SOLD ${htka}*`,
 `ʏᴏᴜ *sᴏʟᴅ ${total} ${global.rpg.emoticon(item)}${item}*.
 `.trim(), imgr + 'sold', [
 [`ɪɴᴠᴇɴᴛᴏʀʏ`, `${usedPrefix}inventory`]

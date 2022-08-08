@@ -10,9 +10,9 @@ let handler = async (m, { conn, args, isPrems, isOwner }) => {
     if (!args[0]) return m.reply('Link?')
     const sections = [
 	{
-	title: htjava + "Select Type Media Here !" + htjava,
+	title: "🎙️ Audio",
 	rows: [
-	    {title: "🎙️ Audio", rowId: `-getaud ${args[0]} audio`}
+	    {title: "Mp3", rowId: `-getaud ${args[0]} audio`}
 	]
     },
     {

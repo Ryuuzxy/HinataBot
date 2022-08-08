@@ -3,9 +3,9 @@ import feedid from 'feedid'
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     let ar = ['terbaru', 'news', 'daerah', 'khazanah', 'islam', 'internasional', 'leisure', 'bola']
     let er = `
-┌「 *Pilihan Kategori Republika* 」
-${ar.map(v => '├ ' + v).join`\n`}
-└────
+${htjava} *Pilihan Kategori Republika* ${htjava}
+${ar.map(v => cmenub + v).join`\n`}
+${cmenuf}
 
 Contoh:
 ${usedPrefix}${command} bisnis

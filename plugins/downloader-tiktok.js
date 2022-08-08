@@ -3,7 +3,7 @@ import { tiktokdl, tiktokdlv2 } from '@bochilteam/scraper'
 
 let handler = async (m, { conn, args, text, usedPrefix, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who).catch(_ => hoppai.getRandom())
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 
 if (!args[0]) throw `Use example ${usedPrefix}${command} https://vt.tiktok.com/ZSwWCk5o/`
@@ -17,19 +17,37 @@ let caption = `
 🔗 Url: ${await shortUrl(url)}
 
 Description: ${description}`
-	conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption, `${await shortUrl(url)}`, url, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
-      ['🎀 Menu', '/menu']
-    ], m)
+    conn.sendButton(m.chat, caption, nickname + '.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: url
+     }}
+  })
 }
 
 if (command == 'tiktokwm') {
 let linkwm = `https://api.lolhuman.xyz/api/tiktokwm?apikey=${global.lolkey}&url=${args[0]}`
 if (!linkwm) throw 'Can\'t download video!'
-let caption2 = `
-Url: ${await shortUrl(`${args[0]}`)}`
-    conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption2, `${await shortUrl(linkwm)}`, linkwm, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
-      ['🎀 Menu', '/menu']
-    ], m)
+let caption = `
+Url: ${await shortUrl(args[0])}`
+    conn.sendButton(m.chat, caption, args[0] + '.mp4', await(await fetch(linkwm)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: linkwm
+     }}
+  })
 }
 
 if (command == 'tiktoknowm') {
@@ -37,14 +55,23 @@ let link = await fetch(`https://api.lolhuman.xyz/api/tiktok?apikey=${global.lolk
 let has = await link.json()
 let x = has.result
 if (!x.link) throw 'Can\'t download video!'
-let caption3 = `
+let caption = `
 Title: ${x.title}
 Keyword: ${x.keywords}
 Description: ${x.description}
 Url: ${await shortUrl(x.link)}`
-	conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, caption3, `${await shortUrl(x.link)}`, x.link, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
-      ['🎀 Menu', '/menu']
-    ], m)
+    conn.sendButton(m.chat, caption, x.title + '.mp4', await(await fetch(x.link)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: x.link
+     }}
+  })
 }
 
 if (command == 'tiktokdl') {
@@ -52,9 +79,19 @@ if (!args[0]) throw `Use example ${usedPrefix}${command} https://www.tiktok.com/
     const { author: { nickname }, video, description } = await tiktokdl(args[0])
     const url = video.no_watermark || video.no_watermark2 || video.no_watermark_raw
     if (!url) throw 'Can\'t download video!'
-    conn.sendHydrated(m.chat, `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}`, `➔ ɴɪᴄᴋɴᴀᴍᴇ ${nickname}${description ? `\n➔ ᴅᴇsᴄʀɪᴘᴛɪᴏɴ:\n${description}` : ''}`, `${await shortUrl(url)}`, url, '🌎 s ᴏ ᴜ ʀ ᴄ ᴇ', null, null, [
-      ['🎀 Menu', '/menu']
-    ], m)
+    let caption = `${htki} ᴛɪᴋᴛᴏᴋ ᴡᴍ ${htka}\n➔ ɴɪᴄᴋɴᴀᴍᴇ ${nickname}\nᴅᴇsᴄʀɪᴘᴛɪᴏɴ:\n${description}`
+    conn.sendButton(m.chat, caption, nickname + '.mp4', await(await fetch(url)).buffer(), [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+            mimetype: 'video/mp4',
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: url
+     }}
+  })
 }
 
 }

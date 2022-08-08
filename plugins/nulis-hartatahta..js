@@ -1,11 +1,29 @@
+import fetch from 'node-fetch'
 let handler = async (m, { conn, text }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
     conn.hartatahta = conn.hartatahta ? conn.hartatahta : {}
     if (m.chat in conn.hartatahta) throw 'Masih ada yang sedang membuat\nTeks Harta Tahta\ndi chat ini... tunggu sampai selesai'
     else conn.hartatahta[m.chat] = true
-    m.reply('_Sedang membuat..._\n*Mohon tunggu sekitar 1 menit*')
+    m.reply(wait)
     try {
-        let img = await ht(text ? text : ':v')
-        conn.sendFile(m.chat, img, 'Harta Tahta.png', wm, m)
+        let img = await ht(text ? text : 'Kosong')
+        conn.sendFile(m.chat, img, text + '.png', `
+*${htjava} Harta*
+*${htjava} Tahta*
+*${htjava} ${text}*
+`, m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
     } finally {
         delete conn.hartatahta[m.chat]
     }
@@ -13,9 +31,7 @@ let handler = async (m, { conn, text }) => {
 handler.help = ['tahta <teks>']
 handler.tags = ['nulis']
 handler.command = /^((harta)?tahta)$/i
-
 handler.limit = true
-
 export default handler
 
 import { spawn } from 'child_process'

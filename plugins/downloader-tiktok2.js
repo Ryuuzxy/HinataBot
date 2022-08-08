@@ -1,5 +1,6 @@
 import { tiktokdl } from '@bochilteam/scraper'
 import { aiovideodl } from './lib/tiktokdl.js'
+import fetch from 'node-fetch'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender

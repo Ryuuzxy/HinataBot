@@ -33,8 +33,12 @@ let tesk = '🚀 *ʟɪɴᴋ:* '
 let pros = '_*ᴄ ᴏ ɴ ᴠ ᴇ ʀ ᴛ ɪ ɴ ɢ . . .*_'
 //TINY
 if (args[1] == "tinyurl") {
+try {
 	let tiny = await (await fetch(`https://hardianto.xyz/api/short/tinyurl?url=${args[0]}&apikey=hardianto`)).json()
 m.reply(pros).then(_ => conn.reply(m.chat, `${tesk}${tiny.result}`,m))
+} catch {
+m.reply(pros).then(_ => conn.reply(m.chat, `${tesk}${await shortUrl(args[0])}`,m))
+}
 }
 //--------------
 
@@ -63,3 +67,8 @@ handler.tags = ['internet']
 handler.command = /^(short(url)?)$/i
 
 export default handler
+
+async function shortUrl(url) {
+	let res = await fetch(`https://tinyurl.com/api-create.php?url=${url}`)
+	return await res.text()
+}
