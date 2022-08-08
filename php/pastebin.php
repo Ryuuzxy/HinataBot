@@ -5,7 +5,7 @@ $options = getopt($short_options, $long_options);
 $paste = isset($options["p"]) ? $options["p"] : $options["paste"];
 $isi = base64_decode($paste);
 $random = rand(1, 99999999);
-$api_dev_key            = 'duRYekh_wL-Mv1tOZbOVKyekC9TeEYrS'; // your api_developer_key
+$api_dev_key            = '2j-PvQpFmJS8OOJefnkaPHbyI3GL9UzE'; // your api_developer_key
 $api_paste_code         = $isi; // your paste text
 $api_paste_private      = '0'; // 0=public 1=unlisted 2=private
 $api_paste_name         = $random; // name or title of your paste
