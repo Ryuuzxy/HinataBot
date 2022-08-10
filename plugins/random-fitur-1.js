@@ -265,8 +265,10 @@ if (!text) throw `Contoh penggunaan ${usedPrefix}${command} anjing
 • gawrgura
 • bucinstick`
 
-await conn.sendFile(m.chat, `https://api.lolhuman.xyz/api/sticker/${text}?apikey=${global.lolkey}`, 'sticker.webp', '', m, null, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+let linknye = `https://api.lolhuman.xyz/api/sticker/${text}?apikey=${global.lolkey}`
+await conn.sendFile(m.chat, linknye, 'sticker.webp', '', m, null, { fileLength: fsizedoc, contextInfo: {
           externalAdReply :{
+          showAdAttribution: true,
     mediaUrl: sig,
     mediaType: 2,
     description: wm, 
@@ -426,7 +428,7 @@ const listMessage = {
   buttonText: `☂️ Tema Disini ☂️`,
   sections
 }
-conn.sendMessage(m.chat, listMessage, {quoted:{key : {participant : '0@s.whatsapp.net'},message: {documentMessage: {title: wm,jpegThumbnail: Buffer.alloc(0)}}}})
+conn.sendMessage(m.chat, listMessage, {quoted: fgif })
 }
 
 }

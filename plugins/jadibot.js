@@ -1,4 +1,4 @@
-let fs = require('fs')
+import fs from 'fs'
 let handler = async (m, { conn }) => {
 let teks = 'JadiBot'
 let dana = global.dana
@@ -31,10 +31,10 @@ Contact person jasa run:
 wa.me/${numberowner} (Owner)
 
 *Follow Instagram ku juga kak😼*`
-  conn.send2ButtonImg(m.chat, fla + teks, anu, instagram, 'Donasi', '.donasi', 'SewaBot', '.sewazifa', m) 
+  conn.sendButton(m.chat, anu, sig, flaaa.getRandom() + teks, [['Donasi', '.donasi'], ['SewaBot', '.sewabot']], m)
 }
 handler.help = ['jadibot']
 handler.tags = ['info']
 handler.command = /^(jadibot)$/i
 
-module.exports = handler
+export default handler

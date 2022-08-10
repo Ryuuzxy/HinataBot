@@ -257,14 +257,14 @@ link: ${v.link}`.trim()
             case 'xnxx':
             case 'xvideo':
             if (!one) throw `Contoh penggunaan ${usedPrefix + command} ${args[0]} |query`
-        let sp = await fetch(`https://revita.herokuapp.com/api/downloader/${args[0]}?query=${one}&apikey=ApiRevita`)
-        let spp = await sp.json()
-        let str = spp.result.map((v, index) => {
+        let sp1 = await fetch(`https://revita.herokuapp.com/api/downloader/${args[0]}?query=${one}&apikey=ApiRevita`)
+        let spp1 = await sp1.json()
+        let str1 = spp1.result.map((v, index) => {
         return `${1 + index}. Judul *${v.title}*
 info: ${v.info}
 link: ${v.link}`.trim()
     }).join('\n\n')
-    await conn.sendButton(m.chat, str, wm, null, [
+    await conn.sendButton(m.chat, str1, wm, null, [
                 ['Dlbokep!', `${usedPrefix}dlbokep`]
             ], m, {
             fileLength: fsizedoc,
