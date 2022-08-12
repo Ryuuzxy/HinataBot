@@ -8,17 +8,21 @@ let handler = async (m, { conn, groupMetadata, usedPrefix }) => {
 ], m)
 
     let [reason, upvote, devote] = conn.vote[id]
-    let caption = `「 *Vote* 」
+    let caption = `*${htjava} DAFTAR VOTE ${htjava}*
 *Alasan:* ${reason}
-*Upvote*
-_Total: ${upvote.length}_
-${upvote.map((v, i) => `• ${i + 1}.  @${v.split`@`[0]}`).join('\n')}
 
-*Devote*
-_Total: ${devote.length}_
-${devote.map((v, i) => `• ${i + 1}.  @${v.split`@`[0]}`).join('\n')}
-wm
-    `.trim()
+*${htjava} UPVOTE ${htjava}*
+*Total:* ${upvote.length}
+${dmenut}
+${upvote.map((v, i) => `${dmenub} ${i + 1}.  @${v.split`@`[0]}`).join('\n')}
+${dmenuf}
+
+*${htjava} DEVOTE ${htjava}*
+*Total:* ${devote.length}
+${dmenut}
+${devote.map((v, i) => `${dmenub} ${i + 1}.  @${v.split`@`[0]}`).join('\n')}
+${dmenuf}
+`.trim()
 await conn.sendButton(m.chat, caption, author, null, [
         ['upvote', `${usedPrefix}upvote`],
         ['devote', `${usedPrefix}devote`],

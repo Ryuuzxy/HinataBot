@@ -13,28 +13,19 @@ let handler = async (m, { conn, groupMetadata, usedPrefix }) => {
         year: 'numeric'
     })
     let absen = conn.absen[id][1]
-    let list = absen.map((v, i) => `• ${i + 1}.  @${v.split`@`[0]}`).join('\n')
-    /*
-let caption = `*Tanggal:* ${date}
+    let list = absen.map((v, i) => `${dmenub} ${i + 1}.  @${v.split`@`[0]}`).join('\n')
+            let caption = `*${htjava} TANGGAL ${htjava}*\n${date}
 ${conn.absen[id][2]}
 
-*「 Sudah absen 」*
+*${htjava} SUDAH ABSEN ${htjava}*
 *Total:* ${absen.length}
-${list}
-`
-await conn.sendButton(m.chat, caption, wm, ['absen', `${usedPrefix}absen`],
-        ['cekabsen', `${usedPrefix}cekabsen`], m, {
-                mentions: conn.parseMention(caption)
-            })
-            */
-            let caption = `*Tanggal:* ${date}
-${conn.absen[id][2]}
 
-*「 Sudah absen 」*
-*Total:* ${absen.length}
+${dmenut}
 ${list}
+${dmenuf}
 `
-await conn.sendButton(m.chat, caption, author, null, [['absen', `${usedPrefix}absen`],['cekabsen', `${usedPrefix}cekabsen`]], m, { mentions: conn.parseMention(caption) })
+`
+await conn.sendButton(m.chat, caption, author, null, [['absen', `${usedPrefix}absen`], ['cekabsen', `${usedPrefix}cekabsen`]], m, { mentions: conn.parseMention(caption) })
 
 }
 handler.help = ['cekabsen']
