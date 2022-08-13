@@ -9,7 +9,7 @@ if (!args[1]) return conn.sendButton(m.chat, htki + ' COCOFUN ' + htka, null, nu
 let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolkey}&url=${args[1]}`)
     let x = await res.json()
   if (args[1] == 'withwm') {
-    conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
+  await conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
 *title:* ${x.result.title}
 *tag:* ${x.result.tag}
 *likes:* ${x.result.likes}
@@ -18,8 +18,10 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
 *views:* ${x.result.views}
 *uploader:* ${x.result.uploader}
 *duration:* ${x.result.duration}
-*dislike:* ${x.result.dislike}
-    `, x.result.title + '.mp4', x.result.withwm, [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+*dislike:* ${x.result.dislike}`, x.result.title + '.mp4', await(await fetch(x.result.withwm)).buffer(), [['🎀 Menu', '/menu']], m, {
+            fileLength: fsizedoc,
+            seconds: fsizedoc,
+            jpegThumbnail: Buffer.alloc(0), contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -33,7 +35,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
   })
   }
   if (args[1] == 'nowm') {
-    conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
+  await conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
 *title:* ${x.result.title}
 *tag:* ${x.result.tag}
 *likes:* ${x.result.likes}
@@ -42,8 +44,10 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
 *views:* ${x.result.views}
 *uploader:* ${x.result.uploader}
 *duration:* ${x.result.duration}
-*dislike:* ${x.result.dislike}
-    `, x.result.title + '.mp4', x.result.nowm, [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+*dislike:* ${x.result.dislike}`, x.result.title + '.mp4', await(await fetch(x.result.nowm)).buffer(), [['🎀 Menu', '/menu']], m, {
+            fileLength: fsizedoc,
+            seconds: fsizedoc,
+            jpegThumbnail: Buffer.alloc(0), contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
