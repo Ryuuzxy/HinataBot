@@ -358,7 +358,6 @@ export async function handler(chatUpdate) {
               if (!isNumber(user.net)) user.net = 0
               if (!isNumber(user.nila)) user.nila = 0
               if (!isNumber(user.nilabakar)) user.nilabakar = 0
-              if (!isNumber(user.note)) user.note = 0
               if (!isNumber(user.ojekk)) user.ojekk = 0
               if (!isNumber(user.oporayam)) user.oporayam = 0
               if (!isNumber(user.orca)) user.orca = 0
