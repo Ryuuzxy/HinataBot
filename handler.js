@@ -1281,41 +1281,21 @@ export async function participantsUpdate({ id, participants, action }) {
   let gettext = await fetch('https://raw.githubusercontent.com/fawwaz37/random/main/bijak.txt')
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
-  
-  /*
-    let res = JSON.parse(readFileSync('./json/emoji.json'))
-    let em = res.emoji
-    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
-    let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
-
-  await conn.sendButtonDoc(id, text, wm, action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + 'Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu', fkontak,{
-  contextInfo: { mentionedJid: [user],
-    externalAdReply :{
-    showAdAttribution: true,
-    mediaUrl: lin_.getRandom(),
-    mediaType: 2,
-    description: botdate , 
-    title: '👋 Hai, ' + ucapan,
-    body: wm,
-    thumbnail: await(await fetch(action === 'add' ? pp : pp)).buffer(),
-    sourceUrl: sgc
-     }}
-  })
-  */
-  let res = JSON.parse(readFileSync('./json/emoji.json'))
-  let em = res.emoji
+  let names = await this.getName(user)
+  let resmoji = JSON.parse(readFileSync('./json/emoji.json'))
+  let emojis = resmoji.emoji
   
      let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
      let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
 let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
-    await conn.sendButton(id, text, weem, Buffer.alloc(0), [[action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? em.getRandom() + ' Menu List' : em.getRandom() + 'Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], null, { quoted: fkontak, mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
+    await conn.sendButton(id, text, weem, Buffer.alloc(0), [[action == 'add' ? emojis.getRandom() + ' Selamat Datang' : emojis.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? emojis.getRandom() + ' Menu List' : emojis.getRandom() + 'Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], null, { quoted: fkontak, mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
     mentionedJid: [user],
           externalAdReply :{
           showAdAttribution: true,
     mediaUrl: lin_.getRandom(),
     mediaType: 2,
     description: wm, 
-    title: '👋 Hai, @user ' + ucapan,
+    title: '👋 Hai, ' + names + ' ' + ucapan,
     body: botdate,
     thumbnail: await( await fetch(pp)).buffer(),
     sourceUrl: sgc
