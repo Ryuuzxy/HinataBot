@@ -1311,6 +1311,7 @@ export async function participantsUpdate({ id, participants, action }) {
      let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
 let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
     await conn.sendButton(id, text, weem, Buffer.alloc(0), [[action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? em.getRandom() + ' Menu List' : em.getRandom() + 'Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], m, { mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
+    mentionedJid: [user],
           externalAdReply :{
           showAdAttribution: true,
     mediaUrl: lin_.getRandom(),
