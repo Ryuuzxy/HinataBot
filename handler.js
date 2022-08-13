@@ -1289,7 +1289,7 @@ export async function participantsUpdate({ id, participants, action }) {
       ['🪄 Test', '/ping'],
       ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']
     ], null, false, { mentions: [user] })
-    */
+    
     
     let res = JSON.parse(readFileSync('./json/emoji.json'))
     let em = res.emoji
@@ -1304,6 +1304,19 @@ let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.f
     title: '👋 Hai, ' + name + ' ' + ucapan,
     body: botdate,
     thumbnail: await( await fetch(action === 'add' ? pp : pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
+  */
+  await conn.sendButtonDoc(id, text, wm, action == 'add' ? 'selamat datang' : 'sampai jumpa', action === 'add' ? 'tes' : 'Huuu', fkontak,{
+  contextInfo: {mentionedJid: [user],
+    externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: botdate , 
+    title: bottime,
+    body: wm,
+    thumbnail: await(await fetch(action === 'add' ? pp : pp)).buffer(),
     sourceUrl: sgc
      }}
   })
