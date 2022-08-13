@@ -1294,7 +1294,7 @@ export async function participantsUpdate({ id, participants, action }) {
     let em = res.emoji
     let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
 let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
-    await conn.sendButton(id, text, (action == 'add' ? 'Welcome By Hinata' : 'Yahh Out Nitip Gorengan'), Buffer.alloc(0), [[em.getRandom() + ' All Menu', usedPrefix + 'allmenu'], [em.getRandom() + ' List Menu', usedPrefix + 'menulist']], m, { mentions: this.parseMention(text || user), mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(thumbnailUrl.getRandom())).buffer(), contextInfo: {
+    await this.sendButton(id, text, (action == 'add' ? 'Welcome By Hinata' : 'Yahh Out Nitip Gorengan'), Buffer.alloc(0), [[em.getRandom() + ' All Menu', usedPrefix + 'allmenu'], [em.getRandom() + ' List Menu', usedPrefix + 'menulist']], m, { mentions: this.parseMention(text), mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(thumbnailUrl.getRandom())).buffer(), contextInfo: {
           externalAdReply :{
           showAdAttribution: true,
     mediaUrl: lin_.getRandom(),
