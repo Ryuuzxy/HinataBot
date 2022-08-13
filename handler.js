@@ -1269,8 +1269,8 @@ export async function participantsUpdate({ id, participants, action }) {
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
                 for (let user of participants) {
-                    let pp = './src/avatar_contact.png'
-                    let ppgc = './src/avatar_contact.png'
+                    let pp = hwaifu.getRandom()
+                    let ppgc = hwaifu.getRandom()
                     try {
                         pp = await this.profilePictureUrl(user, 'image')
                         ppgc = await this.profilePictureUrl(id, 'image')
@@ -1283,38 +1283,18 @@ export async function participantsUpdate({ id, participants, action }) {
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
   
-  /*
-  this.sendHydrated2(id, text, wm + '\n\n' + botdate, action === 'add' ? pp : pp, sgc, (action == 'add' ? 'Hinata Group' : 'Nitip Gorengan'), null, null, [
-      ['🎀 Menu', '/menu'],
-      ['🪄 Test', '/ping'],
-      ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']
-    ], null, false, { mentions: [user] })
-    
-    
     let res = JSON.parse(readFileSync('./json/emoji.json'))
     let em = res.emoji
-    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
-let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
-    await this.sendButton(id, text, (action == 'add' ? 'Welcome By Hinata' : 'Yahh Out Nitip Gorengan'), Buffer.alloc(0), [[em.getRandom() + ' All Menu', '/allmenu'], [em.getRandom() + ' List Menu', '/menulist']], m, { mentions: this.parseMention(text), mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(thumbnailUrl.getRandom())).buffer(), contextInfo: {
-          externalAdReply :{
-          showAdAttribution: true,
+    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]'let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
+
+  await conn.sendButtonDoc(id, text, wm, action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + 'Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu', fkontak,{
+  contextInfo: { mentionedJid: [user],
+    externalAdReply :{
+    showAdAttribution: true,
     mediaUrl: lin_.getRandom(),
     mediaType: 2,
-    description: wm, 
-    title: '👋 Hai, ' + name + ' ' + ucapan,
-    body: botdate,
-    thumbnail: await( await fetch(action === 'add' ? pp : pp)).buffer(),
-    sourceUrl: sgc
-     }}
-  })
-  */
-  await conn.sendButtonDoc(id, text, wm, action == 'add' ? 'selamat datang' : 'sampai jumpa', action === 'add' ? 'tes' : 'Huuu', fkontak,{
-  contextInfo: {mentionedJid: [user],
-    externalAdReply :{
-    mediaUrl: sig,
-    mediaType: 2,
     description: botdate , 
-    title: bottime,
+    title: '👋 Hai, ' + ucapan,
     body: wm,
     thumbnail: await(await fetch(action === 'add' ? pp : pp)).buffer(),
     sourceUrl: sgc
