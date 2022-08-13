@@ -1282,6 +1282,7 @@ export async function participantsUpdate({ id, participants, action }) {
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
   
+  /*
     let res = JSON.parse(readFileSync('./json/emoji.json'))
     let em = res.emoji
     let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
@@ -1297,6 +1298,27 @@ export async function participantsUpdate({ id, participants, action }) {
     title: '👋 Hai, ' + ucapan,
     body: wm,
     thumbnail: await(await fetch(action === 'add' ? pp : pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
+  */
+  let res = JSON.parse(readFileSync('./json/emoji.json'))
+  let em = res.emoji
+  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+  let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+  let names = await conn.getName(who)
+     let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
+     let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
+let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
+    await conn.sendButton(id, text, weem, Buffer.alloc(0), [[action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? em.getRandom() + ' Menu List' : em.getRandom() + 'Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], m, { mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
+          externalAdReply :{
+          showAdAttribution: true,
+    mediaUrl: lin_.getRandom(),
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + names + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await( await fetch(pp)).buffer(),
     sourceUrl: sgc
      }}
   })
