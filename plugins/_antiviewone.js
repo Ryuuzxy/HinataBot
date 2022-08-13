@@ -1,8 +1,12 @@
 let { downloadContentFromMessage } = (await import('@adiwajshing/baileys'));
+import fetch from 'node-fetch'
 
 export async function before(m, { isAdmin, isBotAdmin }) {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
+let name = await conn.getName(who)
  
-let chat = db.data.chats[m.chat]
+let chat = global.db.data.chats[m.chat]
     if (/^[.~#/\$,](read)?viewonce/.test(m.text)) return
     if (!chat.viewonce || chat.isBanned) return
     if (m.mtype == 'viewOnceMessage') {
@@ -14,9 +18,30 @@ let chat = db.data.chats[m.chat]
             buffer = Buffer.concat([buffer, chunk])
         }
         if (/video/.test(type)) {
-            return this.sendFile(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
+            return this.sendFile(m.chat, buffer, ucapan, msg[type].caption || '', m, null, { fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
+            
         } else if (/image/.test(type)) {
-            return this.sendFile(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
+            return this.sendFile(m.chat, buffer, ucapan, msg[type].caption || '', m, null, { fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
+          externalAdReply :{
+    mediaUrl: sig,
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await(await fetch(pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
         }
     }
 }
