@@ -1304,9 +1304,7 @@ export async function participantsUpdate({ id, participants, action }) {
   */
   let res = JSON.parse(readFileSync('./json/emoji.json'))
   let em = res.emoji
-  let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-  let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
-  let names = await conn.getName(who)
+  
      let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
      let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
 let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
@@ -1317,7 +1315,7 @@ let weem = `📮 *Note:* Jika menemukan bug, error atau kesulitan dalam pengguna
     mediaUrl: lin_.getRandom(),
     mediaType: 2,
     description: wm, 
-    title: '👋 Hai, ' + names + ' ' + ucapan,
+    title: '👋 Hai, ' + user + ' ' + ucapan,
     body: botdate,
     thumbnail: await( await fetch(pp)).buffer(),
     sourceUrl: sgc
