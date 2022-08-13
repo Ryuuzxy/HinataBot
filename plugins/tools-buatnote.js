@@ -11,7 +11,7 @@ let handler = async(m, {conn, command, usedPrefix, text}) => {
     'title': title,
     'isi': isi
   }
-  global.db.data.users[m.sender].note.push(cttn)
+ note.push(cttn)
   conn.reply(m.chat, `Catatan berhasil dibuat!\nUntuk melihat note. Ketik: ${usedPrefix}lihatnote`, m, false, {
     contextInfo: {
       mentionedJid: conn.parseMention(text)

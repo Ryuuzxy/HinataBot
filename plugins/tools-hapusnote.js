@@ -24,9 +24,7 @@ let handler = async(m, {conn, command, usedPrefix, text}) => {
     }
   }
 
-  cdang = global.db.data.users[m.sender].note
   global.db.data.users[m.sender].note = tmp
-
 conn.reply(m.chat, `Berhasil menghapus note!`, m, false, {
     contextInfo: {
       mentionedJid: conn.parseMention(text)
