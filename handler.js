@@ -1285,7 +1285,8 @@ export async function participantsUpdate({ id, participants, action }) {
   
     let res = JSON.parse(readFileSync('./json/emoji.json'))
     let em = res.emoji
-    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]'let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
+    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
+    let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
 
   await conn.sendButtonDoc(id, text, wm, action == 'add' ? em.getRandom() + ' Selamat Datang' : em.getRandom() + 'Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu', fkontak,{
   contextInfo: { mentionedJid: [user],
