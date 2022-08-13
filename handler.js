@@ -2,7 +2,7 @@ import { smsg } from './lib/simple.js'
 import { format } from 'util'
 import { fileURLToPath } from 'url'
 import path, { join } from 'path'
-import { unwatchFile, watchFile } from 'fs'
+import { unwatchFile, watchFile, readFileSync } from 'fs'
 import chalk from 'chalk'
 import fetch from 'node-fetch'
 
@@ -46,6 +46,7 @@ export async function handler(chatUpdate) {
               if (!('afkReason' in user)) user.afkReason = ''
               if (!('autolevelup' in user)) user.autolevelup = false
               if (!('banned' in user)) user.banned = false
+              if (!('note' in user)) user.note = ''
               if (!('job' in user)) user.job = ''
               if (!('kingdom' in user)) user.kingdom = true
               if (!('misi' in user)) user.misi = ''
@@ -357,7 +358,7 @@ export async function handler(chatUpdate) {
               if (!isNumber(user.net)) user.net = 0
               if (!isNumber(user.nila)) user.nila = 0
               if (!isNumber(user.nilabakar)) user.nilabakar = 0
-              if (!isNumber(user.note)) user.note = []
+              if (!isNumber(user.note)) user.note = 0
               if (!isNumber(user.ojekk)) user.ojekk = 0
               if (!isNumber(user.oporayam)) user.oporayam = 0
               if (!isNumber(user.orca)) user.orca = 0
@@ -752,7 +753,7 @@ export async function handler(chatUpdate) {
                     net: 0,
                     nila: 0,
                     nilabakar: 0,
-                    note: [],
+                    note: '',
                     ojekk: 0,
                     oporayam: 0,
                     orca: 0,
@@ -1281,11 +1282,31 @@ export async function participantsUpdate({ id, participants, action }) {
   let gettext = await fetch('https://raw.githubusercontent.com/fawwaz37/random/main/bijak.txt')
   let restext = await gettext.text()
   let katarandom = restext.split('\n')
+  
+  /*
   this.sendHydrated2(id, text, wm + '\n\n' + botdate, action === 'add' ? pp : pp, sgc, (action == 'add' ? 'Hinata Group' : 'Nitip Gorengan'), null, null, [
       ['🎀 Menu', '/menu'],
       ['🪄 Test', '/ping'],
       ['Ok 🎉\n\n' + katarandom.getRandom() + '\n\n', '...']
     ], null, false, { mentions: [user] })
+    */
+    let res = JSON.parse(readFileSync('./json/emoji.json'))
+    let em = res.emoji
+    let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
+let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
+    await conn.sendButton(id, text, (action == 'add' ? 'Welcome By Hinata' : 'Yahh Out Nitip Gorengan'), Buffer.alloc(0), [[em.getRandom() + ' All Menu', usedPrefix + 'allmenu'], [em.getRandom() + ' List Menu', usedPrefix + 'menulist']], m, { mentions: this.parseMention(text || user), mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(thumbnailUrl.getRandom())).buffer(), contextInfo: {
+          externalAdReply :{
+          showAdAttribution: true,
+    mediaUrl: lin_.getRandom(),
+    mediaType: 2,
+    description: wm, 
+    title: '👋 Hai, ' + name + ' ' + ucapan,
+    body: botdate,
+    thumbnail: await( await fetch(action === 'add' ? pp : pp)).buffer(),
+    sourceUrl: sgc
+     }}
+  })
+    
                     }
                 }
             }
