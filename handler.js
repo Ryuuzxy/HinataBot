@@ -1289,9 +1289,9 @@ export async function participantsUpdate({ id, participants, action }) {
   
      let mim_ = ["application/vnd.openxmlformats-officedocument.presentationml.presentation","application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","application/vnd.openxmlformats-officedocument.wordprocessingml.document","text/rtf"]
      let lin_ = ["https://www.youtube.com","https://www.instagram.com","https://www.facebook.com"]
-let wmwel = `📮 *Welcome:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
-let wmlea = `📮 *Byee:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
-    await conn.sendButton(id, text, action == 'add' ? wmwel : wmlea, Buffer.alloc(0), [[action == 'add' ? emojis.getRandom() + ' Selamat Datang' : emojis.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? emojis.getRandom() + ' Menu List' : emojis.getRandom() + 'Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], null, { quoted: ftoko, mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
+let wmwel = `\n\n📮 *Welcome:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
+let wmlea = `\n\n📮 *Byee:* Jika menemukan bug, error atau kesulitan dalam penggunaan silahkan laporkan/tanyakan kepada Owner`
+    await conn.sendButton(id, text, action == 'add' ? wmwel : wmlea, Buffer.alloc(0), [[action == 'add' ? emojis.getRandom() + ' Selamat Datang' : emojis.getRandom() + ' Sampai Jumpa', action === 'add' ? 'tes' : 'Huuu'], [action == 'add' ? emojis.getRandom() + ' Menu List' : emojis.getRandom() + ' Byee \n\n' + katarandom.getRandom() + '\n\n', action === 'add' ? '/menulist' : 'Huuu']], null, { quoted: ftoko, mimetype: mim_.getRandom(), fileName: ucapan, pageCount: fpagedoc, fileLength: fsizedoc, seconds: fsizedoc, jpegThumbnail: await( await fetch(ppgc)).buffer(), contextInfo: {
     mentionedJid: [user],
           externalAdReply :{
           showAdAttribution: true,
@@ -1313,10 +1313,12 @@ let wmlea = `📮 *Byee:* Jika menemukan bug, error atau kesulitan dalam penggun
         case 'demote':
            if (!text)
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user *is no longer Admin*')
-            text = text.replace('@user', '@' + participants[0].split('@')[0])
-            if (chat.detect) return this.sendHydrated(id, text.trim(), wm, logo, null, null, nomorown, nameown, [
-      ['🔖Ok', 'Huuu']
-    ], null)
+            if (chat.detect) return this.sendButton(id, text, wm, logo, [
+            ['🔖Ok', 'Huuu'],
+            ['Matikan Fitur ini', '/disable detect']
+      ], null, {
+                mentions: [user]
+            })
             break
     }
 }
@@ -1343,7 +1345,8 @@ export async function groupsUpdate(groupsUpdate) {
             if (groupUpdate.restrict == false) text = (chats.sRestrictOff || this.sRestrictOff || conn.sRestrictOff || '*Group has been only admin!*')
             if (!text) continue
             this.sendHydrated(id, text.trim(), wm, logo, null, null, nomorown, nameown, [
-      ['🔖Ok', 'Huuu']
+      ['🔖Ok', 'Huuu'],
+      ['Matikan Fitur ini', '/disable detect']
     ], null)
     }
 }
