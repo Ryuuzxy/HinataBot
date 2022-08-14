@@ -8,28 +8,33 @@ let urut = text.split`|`
   let three = urut[3]
   
 if (command == 'cts') {
-if (!args[0]) return
+if (!args[0]) {
 let caption = `*MASUKKAN TEKS:*
 Contoh:\n${usedPrefix + command} popular
 
 *List:*
 ${htjava} cat
-${htjava} all
-${htjava} popular
-${htjava} search
-${htjava} detail
+${htjava} tag
+${htjava} gif
+${htjava} say
+${htjava} tsay
+${htjava} csay
+${htjava} gsay
+${htjava} width
+${htjava} type
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
                 ['Ok', `Huuu`]
-            ], m, { quoted: fgif })
+            ], m)
+            }
 if (args[0] == 'cat') {
 let res = `https://cataas.com/cat`
 let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} ${args[0]}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'tag') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |white`)
@@ -38,7 +43,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} |${one}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'gif') {
 let res = 'https://cataas.com/cat/gif'
@@ -46,7 +51,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} ${args[0]}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'say') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |halo`)
@@ -55,7 +60,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} ${args[0]}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'tsay') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |cute|white`)
@@ -64,7 +69,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} |${one}|${two}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'csay') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |hello|50|red`)
@@ -73,7 +78,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command} |${one}|${two}|${three}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'type') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |hq`)
@@ -82,7 +87,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'width') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |100`)
@@ -91,7 +96,7 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'gsay') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -100,12 +105,12 @@ let caption = `*Result:*`
 await conn.sendButton(m.chat, caption, wm, res, [
                 ['Next', `${usedPrefix + command}`],
                 ['To Sticker', `${usedPrefix}s`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 }
 
 if (command == 'museum') {
-if (!args[0]) return
+if (!args[0]) {
 let caption = `*MASUKKAN TEKS:*
 Contoh:\n${usedPrefix + command} q |Contoh
 
@@ -123,7 +128,8 @@ ${htjava} time
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
                 ['Ok', `Huuu`]
-            ], m, { quoted: fgif })
+            ], m)
+            }
 if (args[0] == 'high') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
 let res = 'https://collectionapi.metmuseum.org/public/collection/v1/search?isHighlight=true&q=' + one
@@ -135,8 +141,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'id') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |123456`)
@@ -207,7 +213,7 @@ let caption = `*Result:*
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
                 ['Menu', `${usedPrefix}menu`]
-            ], m, { quoted: fgif })
+            ], m)
 }
 if (args[0] == 'q') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -220,8 +226,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'onview') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -234,8 +240,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'aoc') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -248,8 +254,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'med') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -262,8 +268,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'img') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -276,8 +282,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'loc') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -290,8 +296,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 if (args[0] == 'time') {
 if (!one) return m.reply(`Example: ${usedPrefix + command} ${args[0]} |Hello`)
@@ -304,8 +310,8 @@ let caption = `*Result:*
 `
 
 await conn.sendButton(m.chat, caption, wm, imgr + command, [
-                ['Get Random', `${usedPrefix + command} ${args[0]} |${json.objectIDs.getRandom()}`]
-            ], m, { quoted: fgif })
+                ['Get Random', `${usedPrefix + command} id |${json.objectIDs.getRandom()}`]
+            ], m)
 }
 }
 
