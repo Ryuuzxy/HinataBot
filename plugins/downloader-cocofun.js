@@ -6,10 +6,10 @@ let pp = await conn.profilePictureUrl(who).catch(_ => hwaifu.getRandom())
 let name = await conn.getName(who)
 if (!args[0]) throw `Use example ${usedPrefix}${command} http://i.coco.fun/short/1513tui/`
 if (!args[1]) return conn.sendButton(m.chat, htki + ' COCOFUN ' + htka, null, null, [['❌ NO WM', `.cocofun ${args[0]} nowm`],['✅ WITH WM', `.cocofun ${args[0]} withwm`]],m)
-let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolkey}&url=${args[1]}`)
+let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolkey}&url=${args[0]}`)
     let x = await res.json()
   if (args[1] == 'withwm') {
-  await conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
+    conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
 *title:* ${x.result.title}
 *tag:* ${x.result.tag}
 *likes:* ${x.result.likes}
@@ -18,10 +18,8 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
 *views:* ${x.result.views}
 *uploader:* ${x.result.uploader}
 *duration:* ${x.result.duration}
-*dislike:* ${x.result.dislike}`, x.result.title + '.mp4', await(await fetch(x.result.withwm)).buffer(), [['🎀 Menu', '/menu']], m, {
-            fileLength: fsizedoc,
-            seconds: fsizedoc,
-            jpegThumbnail: Buffer.alloc(0), contextInfo: {
+*dislike:* ${x.result.dislike}
+    `, x.result.title + '.mp4', x.result.withwm, [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
@@ -35,7 +33,7 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
   })
   }
   if (args[1] == 'nowm') {
-  await conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
+    conn.sendButton(m.chat, `*${htki} COCOFUN ${htka}*
 *title:* ${x.result.title}
 *tag:* ${x.result.tag}
 *likes:* ${x.result.likes}
@@ -44,10 +42,8 @@ let res = await fetch(`https://api.lolhuman.xyz/api/cocofun?apikey=${global.lolk
 *views:* ${x.result.views}
 *uploader:* ${x.result.uploader}
 *duration:* ${x.result.duration}
-*dislike:* ${x.result.dislike}`, x.result.title + '.mp4', await(await fetch(x.result.nowm)).buffer(), [['🎀 Menu', '/menu']], m, {
-            fileLength: fsizedoc,
-            seconds: fsizedoc,
-            jpegThumbnail: Buffer.alloc(0), contextInfo: {
+*dislike:* ${x.result.dislike}
+    `, x.result.title + '.mp4', x.result.nowm, [['🎀 Menu', '/menu']], m, { fileLength: fsizedoc, seconds: fsizedoc, contextInfo: {
             mimetype: 'video/mp4',
           externalAdReply :{
     mediaUrl: sig,
